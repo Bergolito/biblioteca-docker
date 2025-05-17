@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./biblioteca-backend-node-express
+    container_name: biblioteca-backend
+    ports:
+      - "3500:3500"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./biblioteca-backend-node-express:/app
+    working_dir: /app
+    command: npm start
+
+  frontend:
+    build: ./biblioteca-frontend-react
+    container_name: biblioteca-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./biblioteca-frontend-react:/app
+    working_dir: /app
+    command: npm start
+    depends_on:
+      - backend

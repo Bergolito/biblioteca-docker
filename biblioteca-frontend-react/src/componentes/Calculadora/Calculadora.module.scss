@@ -1,0 +1,17 @@
+.ListaRestaurantes {
+  margin-top: 1.5rem;
+  padding: 2rem;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px; /* Espaçamento entre os itens */
+  padding: 10px;
+}
+
+.item {
+  background-color: #eee;
+  padding: 20px;
+  text-align: center;
+}

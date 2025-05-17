@@ -1,0 +1,233 @@
+.cardLivro {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 1rem;
+  width: 100%;
+  max-width: 500px;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.cardImagem {
+  width: 150px;
+  min-width: 150px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.capaLivro {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.cardConteudo {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.titulo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  border-bottom: 2px solid #6a5acd;
+  padding-bottom: 0.5rem;
+}
+
+.infoLivro {
+  flex: 1;
+  
+  p {
+    margin: 0.5rem 0;
+    color: #555;
+    font-size: 0.95rem;
+    
+    span {
+      font-weight: 600;
+      color: #6a5acd;
+    }
+  }
+}
+
+.botaoDetalhes {
+  align-self: flex-end;
+  background-color: #6a5acd;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  margin-top: 0.5rem;
+  
+  &:hover {
+    background-color: #5849b8;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.footerBotoes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.5rem;
+  gap: 10px;
+}
+
+.botaoDetalhar {
+  background-color: #6a5acd;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: #6a5acd;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalCard {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  
+  h2 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #6a5acd;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.fecharModal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+  
+  &:hover {
+    color: #000;
+  }
+}
+
+.modalConteudo {
+  display: flex;
+  gap: 2rem;
+  
+  @media (max-width: 650px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.modalImagem {
+  flex: 0 0 200px;
+  
+  img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.detalhesLivro {
+  flex: 1;
+  
+  p {
+    margin: 0.75rem 0;
+    font-size: 1rem;
+    color: #444;
+  }
+}
+
+.infoAdicional {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  
+  h3 {
+    font-size: 1.2rem;
+    color: #6a5acd;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .cardLivro {
+    flex-direction: column;
+  }
+  
+  .cardImagem {
+    width: 100%;
+    height: 180px;
+  }
+  
+  .footerBotoes {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  
+  .botaoDetalhes,
+  .botaoDetalhar {
+    align-self: center;
+    width: 100%;
+  }
+}

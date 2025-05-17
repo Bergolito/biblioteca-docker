@@ -1,0 +1,40 @@
+.sudoku-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide o container em duas colunas iguais */
+    gap: 20px; /* Opcional: adiciona espaçamento entre os grids */
+}
+
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr); /* Cria 9 colunas iguais */
+  grid-template-rows: repeat(9, 1fr); /* Cria 9 linhas iguais */
+  width: 380px; /* Largura total do tabuleiro */
+  border: 2px solid black; /* Borda externa do tabuleiro */
+}
+
+.sudoku-cell {
+  border: 1px solid #ccc; /* Borda das células */
+  width: 40px; /* Largura das células */
+  height: 40px; /* Altura das células */
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  font-size: 1.2em; /* Tamanho da fonte */
+}
+
+/* Estilos para destacar os blocos 3x3 */
+.sudoku-cell:nth-child(3n) {
+  border-right: 2px solid black;
+}
+
+.sudoku-cell:nth-child(27n + 27),
+.sudoku-cell:nth-child(27n + 28),
+.sudoku-cell:nth-child(27n + 29),
+.sudoku-cell:nth-child(27n + 30),
+.sudoku-cell:nth-child(27n + 31),
+sudoku-cell:nth-child(27n + 32),
+.sudoku-cell:nth-child(27n + 33),
+sudoku-cell:nth-child(27n + 34),
+sudoku-cell:nth-child(27n + 35) {
+  border-bottom: 2px solid black;
+}
