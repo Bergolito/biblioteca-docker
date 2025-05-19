@@ -1,13 +1,14 @@
-import { Box, Button, Checkbox, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material"
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import http from "../../../http"
 import ILivro from "../../../interfaces/ILivro"
+import IAutor from "../../../interfaces/IAutor"
 
-interface IAutor {
-    _id: string;
-    nome: string;
-}
+// interface IAutor {
+//     _id: string;
+//     nome: string;
+// }
 
 const listaEditoras = [
     { id: 1, nome: 'Casa do código' },
@@ -43,7 +44,7 @@ const FormularioLivro = () => {
                     
                     // Verifica se autor é um objeto ou string
                     if (typeof resposta.data.autor === 'object' && resposta.data.autor !== null) {
-                        setAutor(resposta.data.autor._id)
+                        setAutor(resposta.data.autor._id.toString())
                     } else {
                         setAutor(resposta.data.autor as string)
                     }

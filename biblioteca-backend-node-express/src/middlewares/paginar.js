@@ -2,7 +2,7 @@ import RequisicaoIncorreta from "../erros/RequisicaoIncorreta.js";
 
 async function paginar(req, res, next) {
   try {
-    let { limite = 15, pagina = 1, ordenacao = "titulo" } = req.query;
+    let { limite = 15, pagina = 1, ordenacao = "nome" } = req.query;
 
     let [campoOrdenacao, ordem] = ordenacao.split(":");
 

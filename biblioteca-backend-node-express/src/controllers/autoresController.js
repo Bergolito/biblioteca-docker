@@ -31,6 +31,24 @@ class AutorController {
     }
   };
 
+  static listarAutorPorFiltro = async (req, res, next) => {
+    console.log('listarAutorPorFiltro => ', req.query);
+    try {
+      const busca = await processaBusca(req.query);
+      console.log('busca => ', busca);
+      
+      if (busca !== null) {
+        const autoresResultado = autores.find(busca);
+        req.resultado = autoresResultado;
+        next();
+      } else {
+        res.status(200).send([]);
+      }
+    } catch (erro) {
+      next(erro);
+    }
+  };
+
   static cadastrarAutor = async (req, res, next) => {
     try {
       let autor = new autores(req.body);
@@ -77,5 +95,19 @@ class AutorController {
     }
   };
 }
+
+async function processaBusca(parametros) {
+  console.log('params => ', parametros);
+
+  //const { nome, nacionalidade } = parametros;
+  const { nome } = parametros;
+
+  let busca = {};
+
+  if (nome) busca.nome = { $regex: nome, $options: "i" };
+  //if (nacionalidade) busca.nacionalidade = nacionalidade;
+
+  return busca;
+}  
 
 export default AutorController;
