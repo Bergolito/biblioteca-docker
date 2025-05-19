@@ -5,12 +5,18 @@ import { Link as RouterLink } from 'react-router-dom'
 import ILivro from "../../../interfaces/ILivro"
 import IAutor from "../../../interfaces/IAutor"
 
+const listaEditoras = [
+    { id: 1, nome: 'Casa do código' },
+    { id: 2, nome: 'Alura' },
+    { id: 3, nome: 'Cristiano Arcoverde Publicacoes' }
+]
+
 const AdministracaoLivros = () => {
 
     const [livros, setLivros] = useState<ILivro[]>([])
     const [titulo, setTitulo] = useState('')
     const [autor, setAutor] = useState('')
-    //const [nomeAutor, setNomeAutor] = useState('')
+    const [editora, setEditora] = useState('')
     const [numeroPaginas, setNumeroPaginas] = useState('')
     const [autores, setAutores] = useState<IAutor[]>([])
 
@@ -24,9 +30,10 @@ const AdministracaoLivros = () => {
         const params: any = {}
         if (titulo) params.titulo = titulo
         if (autor) params.nomeAutor = autor
+        if (editora) params.editora = editora
         if (numeroPaginas) params.numeroPaginas = numeroPaginas
 
-        console.log('params => ',params);
+        console.log('params => ', params);
         http.get<ILivro[]>(API_URL + '/livros/busca', { params })
             .then(resposta => {
                 setLivros(resposta.data)
@@ -39,7 +46,7 @@ const AdministracaoLivros = () => {
     }, [])
 
     const excluir = (livro: ILivro) => {
-        http.delete(API_URL+`/livros/${livro._id}`)
+        http.delete(API_URL + `/livros/${livro._id}`)
             .then(() => {
                 buscarLivros()
             })
@@ -52,6 +59,7 @@ const AdministracaoLivros = () => {
     const handleLimpar = () => {
         setTitulo('')
         setAutor('')
+        setEditora('')
         setNumeroPaginas('')
         buscarLivros()
     }
@@ -60,8 +68,9 @@ const AdministracaoLivros = () => {
         <>
             <Card sx={{ mb: 2 }}>
                 <CardContent>
-                    <Grid container spacing={2} alignItems="center">
-                        <Grid item xs={12} sm={4}>
+                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                        <Grid item xs={12} sm={12}>
+                            <label>Título</label>
                             <TextField
                                 label="Título"
                                 value={titulo}
@@ -69,7 +78,7 @@ const AdministracaoLivros = () => {
                                 fullWidth
                             />
                         </Grid>
-                        <Grid item xs={12} sm={4}>
+                        <Grid item xs={12} sm={12}>
                             <FormControl fullWidth>
                                 <InputLabel>Autor</InputLabel>
                                 <Select
@@ -84,7 +93,22 @@ const AdministracaoLivros = () => {
                                 </Select>
                             </FormControl>
                         </Grid>
-                        <Grid item xs={12} sm={2}>
+                        <Grid item xs={12} sm={12}>
+                            <FormControl fullWidth>
+                                <InputLabel>Editora</InputLabel>
+                                <Select
+                                    label="Editora"
+                                    value={editora}
+                                    onChange={e => setEditora(e.target.value)}
+                                >
+                                    <MenuItem value="">Todos</MenuItem>
+                                    {listaEditoras.map(editora => (
+                                        <MenuItem key={editora.id} value={editora.nome}>{editora.nome}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
                             <TextField
                                 label="Nº de páginas"
                                 type="number"
@@ -93,13 +117,14 @@ const AdministracaoLivros = () => {
                                 fullWidth
                             />
                         </Grid>
-                        <Grid item xs={12} sm={2}>
+                        <Grid item xs={12} sm={12} sx={{ display: 'flex', alignItems: "center", justifyContent: "center" }}>
                             <Button variant="contained" color="primary" onClick={handlePesquisar} sx={{ mr: 1 }}>
                                 Pesquisar
                             </Button>
                             <Button variant="outlined" onClick={handleLimpar}>
                                 Limpar
                             </Button>
+
                         </Grid>
                     </Grid>
                 </CardContent>
@@ -134,7 +159,7 @@ const AdministracaoLivros = () => {
                                 {livro.numeroPaginas}
                             </TableCell>
                             <TableCell>
-                                <RouterLink  to={`/admin/livros/${livro._id}`}> Editar </RouterLink> 
+                                <RouterLink to={`/admin/livros/${livro._id}`}> Editar </RouterLink>
                                 <Button variant="outlined" color="error" onClick={() => excluir(livro)}>
                                     Excluir
                                 </Button>

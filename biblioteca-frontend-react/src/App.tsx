@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import PaginaBaseAdmin from './paginas/Administracao/PaginaBaseAdmin';
 import Home from './paginas/Home';
 import VitrineLivros from './paginas/VitrineLivros';
+import VitrineAutores from './paginas/VitrineAutores';
+import VitrineEditoras from './paginas/VitrineEditoras';
 import Sudoku from './componentes/Sudoku';
 import Calculadora from './componentes/Calculadora';
 import Componentes from './componentes/Componentes';
@@ -15,6 +17,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/livros" element={<VitrineLivros />} />
+      <Route path="/autores" element={<VitrineAutores />} />
+      <Route path="/editoras" element={<VitrineEditoras />} />
       <Route path="/sudoku" element={<Sudoku />} />
       <Route path="/calculadora" element={<Calculadora />} />
       <Route path="/super-calculadora" element={<SuperCalculadora />} />

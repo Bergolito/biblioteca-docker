@@ -122,7 +122,6 @@ class LivroController {
 async function processaBusca(parametros) {
   console.log('params => ', parametros);
 
-  //const { titulo, editora, nomeAutor, numeroPaginas, minPaginas, maxPaginas  } = parametros;
   const { titulo, editora, nomeAutor, numeroPaginas } = parametros;
 
   let busca = {};
@@ -131,13 +130,7 @@ async function processaBusca(parametros) {
   if (editora) busca.editora = editora;
   if (numeroPaginas) busca.numeroPaginas = Number(numeroPaginas);
 
-  //if (minPaginas || maxPaginas) busca.numeroPaginas = {};
-
-  // gte = Greater Than or Equal = Maior ou igual que
-  //if (minPaginas) busca.numeroPaginas.$gte = minPaginas;
-  // lte = Less Than or Equal = Menor ou igual que
-  //if (maxPaginas) busca.numeroPaginas.$lte = maxPaginas;
-
+  // autor
   if (nomeAutor) {
     const autor = await autores.findOne({ nome: nomeAutor });
 

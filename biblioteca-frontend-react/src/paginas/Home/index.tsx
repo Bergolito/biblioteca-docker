@@ -19,7 +19,7 @@ function App() {
           }}
         />
       
-      <h2>Livros em destaque {process.env.REACT_APP_NOME}</h2>
+      {/* <h2>Livros em destaque {process.env.REACT_APP_NOME}</h2> */}
       <Rodape />
     </>
   );

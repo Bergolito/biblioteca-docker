@@ -11,6 +11,13 @@ const NavBar = () => {
         <Link to="/livros">Livros</Link>
       </li>
       <li>
+        <Link to="/autores">Autores</Link>
+      </li>
+      <li>
+        <Link to="/editoras">Editoras</Link>
+      </li>
+
+      <li>
         <Link to="/admin">Admin</Link>
       </li>
     </ul>

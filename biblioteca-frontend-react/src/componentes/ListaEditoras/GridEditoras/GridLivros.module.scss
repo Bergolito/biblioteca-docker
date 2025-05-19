@@ -1,0 +1,25 @@
+.gridContainer {
+  display: grid;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .gridContainer {
+    grid-template-columns: 1fr !important;
+  }
+}
