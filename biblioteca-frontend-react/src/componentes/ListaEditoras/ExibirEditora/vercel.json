@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "biblioteca-frontend-react/build/**/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "biblioteca-backend-node-express/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "biblioteca-backend-node-express/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "biblioteca-frontend-react/build/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
