@@ -21,31 +21,16 @@ const PaginaBaseAdmin = () => {
                                     Livros
                                 </Button>
                             </Link>
-                            <Link component={RouterLink} to="/admin/livros/novo">
-                                <Button sx={{ my: 2, color: 'white' }}>
-                                    Novo Livro
-                                </Button>
-                            </Link>
 
                             <Link component={RouterLink} to="/admin/autores">
                                 <Button sx={{ my: 2, color: 'white' }}>
                                     Autores
                                 </Button>
                             </Link>
-                            <Link component={RouterLink} to="/admin/autores/novo">
-                                <Button sx={{ my: 2, color: 'white' }}>
-                                    Novo Autor
-                                </Button>
-                            </Link>
 
                             <Link component={RouterLink} to="/admin/editoras">
                                 <Button sx={{ my: 2, color: 'white' }}>
                                     Editoras
-                                </Button>
-                            </Link>
-                            <Link component={RouterLink} to="/admin/editoras/novo">
-                                <Button sx={{ my: 2, color: 'white' }}>
-                                    Nova Editora
                                 </Button>
                             </Link>
 

@@ -1,4 +1,7 @@
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Card, CardContent, TextField, MenuItem, Select, InputLabel, FormControl, Grid } from "@mui/material"
+import { 
+    Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, 
+    TableRow, Card, CardContent, TextField, Grid 
+} from "@mui/material"
 import { useEffect, useState } from "react"
 import http from "../../../http"
 import { Link as RouterLink } from 'react-router-dom'
@@ -18,21 +21,6 @@ const AdministracaoAutores = () => {
         })
     }, [API_URL])
 
-    /*
-    const buscarLivros = () => {
-        const params: any = {}
-        if (titulo) params.titulo = titulo
-        if (autor) params.nomeAutor = autor
-        if (editora) params.editora = editora
-        if (numeroPaginas) params.numeroPaginas = numeroPaginas
-
-        console.log('params => ', params);
-        http.get<ILivro[]>(API_URL + '/livros/busca', { params })
-            .then(resposta => {
-                setLivros(resposta.data)
-            })
-    }
-    */
     const buscarAutores = () => {
         const params: any = {}
         if (nome) params.nome = nome
@@ -46,7 +34,6 @@ const AdministracaoAutores = () => {
 
     useEffect(() => {
         buscarAutores()
-        // eslint-disable-next-line
     }, [])
 
     const excluir = (autor: IAutor) => {
@@ -67,6 +54,12 @@ const AdministracaoAutores = () => {
 
     return (
         <>
+            <RouterLink to="/admin/autores/novo">
+                <Button  variant="contained" color="primary">
+                    Novo Autor
+                </Button>
+            </RouterLink>        
+
             <Card sx={{ mb: 2 }}>
                 <CardContent>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -92,6 +85,13 @@ const AdministracaoAutores = () => {
                     </Grid>
                 </CardContent>
             </Card>
+
+            <RouterLink to="/admin/autores/novo">
+                <Button  variant="contained" color="primary">
+                    Novo Autor
+                </Button>
+            </RouterLink>                
+
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>

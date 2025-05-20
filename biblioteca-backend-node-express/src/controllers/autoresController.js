@@ -31,6 +31,7 @@ class AutorController {
     }
   };
 
+  /*
   static listarAutorPorFiltro = async (req, res, next) => {
     console.log('listarAutorPorFiltro => ', req.query);
     try {
@@ -40,6 +41,30 @@ class AutorController {
       if (busca !== null) {
         const autoresResultado = autores.find(busca);
         req.resultado = autoresResultado;
+        next();
+
+      } else {
+        res.status(200).send([]);
+      }
+
+    } catch (erro) {
+      next(erro);
+    }
+  };
+  */
+  static listarAutorPorFiltro = async (req, res, next) => {
+    console.log('listarAutorPorFiltro => ', req.query);
+    try {
+      const busca = await processaBusca(req.query);
+      console.log('busca => ', busca);
+      
+      if (busca !== null) {
+        const autoresResultado = autores
+          .find(busca);
+          //.populate("autor");
+
+        req.resultado = autoresResultado;
+
         next();
       } else {
         res.status(200).send([]);
@@ -100,12 +125,12 @@ async function processaBusca(parametros) {
   console.log('params => ', parametros);
 
   //const { nome, nacionalidade } = parametros;
-  const { nome } = parametros;
+  const { nome, nacionalidade } = parametros;
 
   let busca = {};
 
   if (nome) busca.nome = { $regex: nome, $options: "i" };
-  //if (nacionalidade) busca.nacionalidade = nacionalidade;
+  if (nacionalidade) busca.nacionalidade = nacionalidade;
 
   return busca;
 }  

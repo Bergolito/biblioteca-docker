@@ -1,4 +1,7 @@
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Card, CardContent, TextField, MenuItem, Select, InputLabel, FormControl, Grid } from "@mui/material"
+import { 
+    Button, Paper, Table, TableBody, TableCell, TableContainer, 
+    TableHead, TableRow, Card, CardContent, TextField, Grid
+} from "@mui/material"
 import { useEffect, useState } from "react"
 import http from "../../../http"
 import { Link as RouterLink } from 'react-router-dom'
@@ -52,8 +55,15 @@ const AdministracaoEditoras = () => {
 
     return (
         <>
+            <RouterLink to="/admin/editoras/novo">
+                <Button  variant="contained" color="primary">
+                    Nova Editora
+                </Button>
+            </RouterLink>
+
             <Card sx={{ mb: 2 }}>
                 <CardContent>
+                    
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <Grid item xs={12} sm={12}>
                             <label>Nome</label>
@@ -77,6 +87,13 @@ const AdministracaoEditoras = () => {
                     </Grid>
                 </CardContent>
             </Card>
+            
+            <RouterLink to="/admin/editoras/novo">
+                <Button  variant="contained" color="primary">
+                    Nova Editora
+                </Button>
+            </RouterLink>
+
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>

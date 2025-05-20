@@ -1,7 +1,4 @@
-interface IAutor {
-  _id: string;
-  nome: string;
-}
+import IAutor from "./IAutor";
 
 export default interface ILivro {
   id: number;

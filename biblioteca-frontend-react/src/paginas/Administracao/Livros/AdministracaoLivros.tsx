@@ -1,9 +1,12 @@
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Card, CardContent, TextField, MenuItem, Select, InputLabel, FormControl, Grid } from "@mui/material"
+import { 
+    Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, 
+    Card, CardContent, TextField, MenuItem, Select, InputLabel, FormControl, Grid 
+} from "@mui/material"
 import { useEffect, useState } from "react"
 import http from "../../../http"
-import { Link as RouterLink } from 'react-router-dom'
 import ILivro from "../../../interfaces/ILivro"
 import IAutor from "../../../interfaces/IAutor"
+import { Link as RouterLink } from 'react-router-dom'
 
 const listaEditoras = [
     { id: 1, nome: 'Casa do código' },
@@ -42,7 +45,6 @@ const AdministracaoLivros = () => {
 
     useEffect(() => {
         buscarLivros()
-        // eslint-disable-next-line
     }, [])
 
     const excluir = (livro: ILivro) => {
@@ -66,6 +68,12 @@ const AdministracaoLivros = () => {
 
     return (
         <>
+            <RouterLink to="/admin/livros/novo">
+                <Button variant="contained" color="primary">
+                    Novo Livro
+                </Button>
+            </RouterLink>            
+
             <Card sx={{ mb: 2 }}>
                 <CardContent>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
@@ -129,6 +137,13 @@ const AdministracaoLivros = () => {
                     </Grid>
                 </CardContent>
             </Card>
+
+            <RouterLink to="/admin/livros/novo">
+                <Button variant="contained" color="primary">
+                    Novo Livro
+                </Button>
+            </RouterLink>            
+
             <TableContainer component={Paper}>
                 <Table>
                     <TableHead>
